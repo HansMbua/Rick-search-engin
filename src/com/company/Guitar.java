@@ -4,6 +4,20 @@ public class Guitar {
     private String serialNumber,builder,model,type,backwood,topwood;
     private double price;
 
+    public Guitar() {
+
+    }
+
+    public Guitar(String serialNumber, String builder, String model, String type, String backwood, String topwood, double price) {
+        this.serialNumber = serialNumber;
+        this.builder = builder;
+        this.model = model;
+        this.type = type;
+        this.backwood = backwood;
+        this.topwood = topwood;
+        this.price = price;
+    }
+
     public String getSerialNumber() {
         return serialNumber;
     }
@@ -11,6 +25,7 @@ public class Guitar {
     public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
     }
+
 
     public String getBuilder() {
         return builder;
@@ -58,5 +73,18 @@ public class Guitar {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Guitar available {" +
+                "serialNumber='" + serialNumber + '\'' +
+                ", builder='" + builder + '\'' +
+                ", model='" + model + '\'' +
+                ", type='" + type + '\'' +
+                ", backwood='" + backwood + '\'' +
+                ", topwood='" + topwood + '\'' +
+                ", price=" + price +
+                '}';
     }
 }
