@@ -74,4 +74,17 @@ public class Guitar {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "Guitar available {" +
+                "serialNumber='" + serialNumber + '\'' +
+                ", builder='" + builder + '\'' +
+                ", model='" + model + '\'' +
+                ", type='" + type + '\'' +
+                ", backwood='" + backwood + '\'' +
+                ", topwood='" + topwood + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
