@@ -14,10 +14,7 @@ public class Inventory {
         GuiterList = new LinkedList<>();
     }
     //addeds guitar object to Inventory
-    public void addGuitar(String serialNumber, String builder, String model, String type, String backwood, String topwood, double price){
-        //get guiter
-      Guitar guitar = new Guitar(serialNumber,builder,model,type,backwood,topwood,price);
-        //add guiter to inventory
+    public void addGuitar(Guitar guitar){
         GuiterList.add(guitar);
     }
 
@@ -40,42 +37,30 @@ public class Inventory {
         return null;
     }
 
-    public Guitar Search(Guitar searchguitar){
-        //loop through list
-        Guitar guitar2 = new Guitar();
-        for (Iterator i = GuiterList.listIterator(); i.hasNext();){
+    public List Search(Guitar searchGuitar){
+        List guitarList = new LinkedList<>();
+        for (Iterator i = GuiterList.listIterator(); i.hasNext(); ) {
             //create guitar object to hold guitars
-            guitar2 = (Guitar) i.next();
-            //get matching objacts values
-            String builder = searchguitar.getBuilder();
-            if ((builder != null) && (builder.equals(" "))&&(!builder.equals(guitar2.getBuilder())) )
+            Guitar guitar2 = (Guitar) i.next();
+            //get matching objects values
+
+            String model = searchGuitar.getModel();
+            if ((model != null) && (!model.equals("")) && (!model.equals(guitar2.getModel())))
+                continue;
+            if (searchGuitar.getTheTypes() != guitar2.getTheTypes())
+                continue;
+            if (searchGuitar.getTheBuilder() != guitar2.getTheBuilder())
+                continue;
+            if (searchGuitar.getTheWood() != guitar2.getTheWood())
                 continue;
 
-            String model = searchguitar.getModel();
-            if ((model != null) && (model.equals(" "))&&(!model.equals(guitar2.getModel())) )
-                continue;
 
-
-            String type = searchguitar.getType();
-            if ((type != null) && (type.equals(" "))&&(!type.equals(guitar2.getType())) )
-                continue;
-
-
-            String backwood = searchguitar.getBackwood();
-            if ((backwood != null) && (backwood.equals(" "))&&(!backwood.equals(guitar2.getBackwood())) )
-                continue;
-
-            String topWood = searchguitar.getTopwood();
-            if ((topWood != null) && (topWood.equals(" "))&&(!topWood.equals(guitar2.getTopwood())) )
-                continue;
             //pass them in a list object
             // return the list object
-            return guitar2;
+            guitarList.add(guitar2);
         }
 
-        return null;
-
-
+        return guitarList;
 
     }
 }

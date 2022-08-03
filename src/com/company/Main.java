@@ -1,5 +1,9 @@
 package com.company;
 
+import com.company.enumTypes.Builder;
+import com.company.enumTypes.Types;
+import com.company.enumTypes.Wood;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,25 +15,33 @@ public class Main {
         run();
     }
 
-    public static void run(){
+    public static void run() {
         Inventory inventory = new Inventory();
+
+        Guitar guitar = new Guitar("", "sn-12", Wood.BRAZILIAN_ROSEWOOD, Builder.FINDER, Types.ELECTRIC, 0.50);
+        Guitar guitar2 = new Guitar("", "sn-12", Wood.INDIAN_ROSEWOOD, Builder.FINDER, Types.ELECTRIC, 0.50);
+        Guitar theGuitar = new Guitar("", "", Wood.MAHOGANY, Builder.FINDER, Types.ELECTRIC, 0.50);
         //add values into object
-        inventory.addGuitar("1234","hans","sn-1234","mohoghni","spine","vs",5.50);
-        //search guiter with serialNumber
-//        Guitar guitar = inventory.getGuitar("1234");
-        //costomers search
-        Guitar CostomerSpec = new Guitar(" ","james","sn-1234","mohoghni","spine","",5.50);
+        inventory.addGuitar(guitar);
+        inventory.addGuitar(guitar2);
+        inventory.addGuitar(theGuitar);
+        //search guitar with serialNumber
 
-        Guitar guitar1 = inventory.Search(CostomerSpec);
+        Guitar CustomersSpec = new Guitar("", "", Wood.BRAZILIAN_ROSEWOOD, Builder.FINDER, Types.ACOUSTIC, 0.00);
 
-//        System.out.println("the guiter is : "+ guitar.toString());
+        List<Guitar> guitar1 = inventory.Search(CustomersSpec);
 
-        //loop through the list and display the costomers search
-          if (guitar1 != null){
-              System.out.println("Erin you might like "+guitar1);
-          }else {
-              System.out.println("sorry Erin we have no match found for you ");
-          }
+
+        if (!guitar1.isEmpty()){
+            for (Iterator i = guitar1.iterator(); i.hasNext();){
+                Guitar guitar3 = (Guitar) i.next();
+                System.out.println(guitar3);
+
+            }
+
+        }else{
+            System.out.println("sorry we cannot find a match");
+        }
 
 
     }

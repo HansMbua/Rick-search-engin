@@ -1,20 +1,26 @@
 package com.company;
 
+import com.company.enumTypes.Builder;
+import com.company.enumTypes.Types;
+import com.company.enumTypes.Wood;
+
 public class Guitar {
-    private String serialNumber,builder,model,type,backwood,topwood;
+    private String serialNumber,model;
+    private Wood theWood;
+    private Builder theBuilder;
+    private Types theTypes;
     private double price;
 
     public Guitar() {
 
     }
 
-    public Guitar(String serialNumber, String builder, String model, String type, String backwood, String topwood, double price) {
+    public Guitar(String serialNumber, String model, Wood theWood, Builder theBuilder, Types theTypes, double price) {
         this.serialNumber = serialNumber;
-        this.builder = builder;
         this.model = model;
-        this.type = type;
-        this.backwood = backwood;
-        this.topwood = topwood;
+        this.theWood = theWood;
+        this.theBuilder = theBuilder;
+        this.theTypes = theTypes;
         this.price = price;
     }
 
@@ -26,15 +32,6 @@ public class Guitar {
         this.serialNumber = serialNumber;
     }
 
-
-    public String getBuilder() {
-        return builder;
-    }
-
-    public void setBuilder(String builder) {
-        this.builder = builder;
-    }
-
     public String getModel() {
         return model;
     }
@@ -43,28 +40,28 @@ public class Guitar {
         this.model = model;
     }
 
-    public String getType() {
-        return type;
+    public Wood getTheWood() {
+        return theWood;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTheWood(Wood theWood) {
+        this.theWood = theWood;
     }
 
-    public String getBackwood() {
-        return backwood;
+    public Builder getTheBuilder() {
+        return theBuilder;
     }
 
-    public void setBackwood(String backwood) {
-        this.backwood = backwood;
+    public void setTheBuilder(Builder theBuilder) {
+        this.theBuilder = theBuilder;
     }
 
-    public String getTopwood() {
-        return topwood;
+    public Types getTheTypes() {
+        return theTypes;
     }
 
-    public void setTopwood(String topwood) {
-        this.topwood = topwood;
+    public void setTheTypes(Types theTypes) {
+        this.theTypes = theTypes;
     }
 
     public double getPrice() {
@@ -77,13 +74,12 @@ public class Guitar {
 
     @Override
     public String toString() {
-        return "Guitar available {" +
+        return "Guitar{" +
                 "serialNumber='" + serialNumber + '\'' +
-                ", builder='" + builder + '\'' +
                 ", model='" + model + '\'' +
-                ", type='" + type + '\'' +
-                ", backwood='" + backwood + '\'' +
-                ", topwood='" + topwood + '\'' +
+                ", theWood=" + theWood +
+                ", theBuilder=" + theBuilder +
+                ", theTypes=" + theTypes +
                 ", price=" + price +
                 '}';
     }
