@@ -5,22 +5,17 @@ import com.company.enumTypes.Types;
 import com.company.enumTypes.Wood;
 
 public class Guitar {
-    private String serialNumber,model;
-    private Wood theWood;
-    private Builder theBuilder;
-    private Types theTypes;
+    private String serialNumber;
+    private GuitarSpec spec;
     private double price;
 
     public Guitar() {
 
     }
 
-    public Guitar(String serialNumber, String model, Wood theWood, Builder theBuilder, Types theTypes, double price) {
+    public Guitar(String serialNumber, GuitarSpec spec, double price) {
         this.serialNumber = serialNumber;
-        this.model = model;
-        this.theWood = theWood;
-        this.theBuilder = theBuilder;
-        this.theTypes = theTypes;
+        this.spec = spec;
         this.price = price;
     }
 
@@ -32,37 +27,6 @@ public class Guitar {
         this.serialNumber = serialNumber;
     }
 
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public Wood getTheWood() {
-        return theWood;
-    }
-
-    public void setTheWood(Wood theWood) {
-        this.theWood = theWood;
-    }
-
-    public Builder getTheBuilder() {
-        return theBuilder;
-    }
-
-    public void setTheBuilder(Builder theBuilder) {
-        this.theBuilder = theBuilder;
-    }
-
-    public Types getTheTypes() {
-        return theTypes;
-    }
-
-    public void setTheTypes(Types theTypes) {
-        this.theTypes = theTypes;
-    }
 
     public double getPrice() {
         return price;
@@ -72,14 +36,19 @@ public class Guitar {
         this.price = price;
     }
 
+    public void setSpec(GuitarSpec spec){
+        this.spec = spec;
+    }
+
+    public GuitarSpec getSpec() {
+        return spec;
+    }
+
     @Override
     public String toString() {
         return "Guitar{" +
                 "serialNumber='" + serialNumber + '\'' +
-                ", model='" + model + '\'' +
-                ", theWood=" + theWood +
-                ", theBuilder=" + theBuilder +
-                ", theTypes=" + theTypes +
+                ", spec=" + spec +
                 ", price=" + price +
                 '}';
     }

@@ -17,19 +17,11 @@ public class Main {
 
     public static void run() {
         Inventory inventory = new Inventory();
+        initializeInventory(inventory);
 
-        Guitar guitar = new Guitar("", "sn-12", Wood.BRAZILIAN_ROSEWOOD, Builder.FINDER, Types.ELECTRIC, 0.50);
-        Guitar guitar2 = new Guitar("", "sn-12", Wood.INDIAN_ROSEWOOD, Builder.FINDER, Types.ELECTRIC, 0.50);
-        Guitar theGuitar = new Guitar("", "", Wood.MAHOGANY, Builder.FINDER, Types.ELECTRIC, 0.50);
-        //add values into object
-        inventory.addGuitar(guitar);
-        inventory.addGuitar(guitar2);
-        inventory.addGuitar(theGuitar);
-        //search guitar with serialNumber
+        GuitarSpec whatErinLikes = new GuitarSpec(Wood.BRAZILIAN_ROSEWOOD,Builder.FINDER,Types.ACOUSTIC,"");
 
-        Guitar CustomersSpec = new Guitar("", "", Wood.BRAZILIAN_ROSEWOOD, Builder.FINDER, Types.ACOUSTIC, 0.00);
-
-        List<Guitar> guitar1 = inventory.Search(CustomersSpec);
+        List<Guitar> guitar1 = inventory.Search(whatErinLikes);
 
 
         if (!guitar1.isEmpty()){
@@ -40,9 +32,26 @@ public class Main {
             }
 
         }else{
-            System.out.println("sorry we cannot find a match");
+            System.out.println("sorry we cannot find a match but we found Related specs for you");
+
         }
 
 
     }
+
+    private static void initializeInventory(Inventory inventory) {
+
+        GuitarSpec guitarSpec = new GuitarSpec(Wood.BRAZILIAN_ROSEWOOD,Builder.FINDER,Types.ELECTRIC,"ns29-7");
+        Guitar guitar = new Guitar("",guitarSpec,50.0);
+
+        GuitarSpec guitarSpec2 = new GuitarSpec(Wood.MAHOGANY,Builder.FINDER,Types.ELECTRIC,"ns29-7");
+        Guitar guitar1 = new Guitar("",guitarSpec2,50.0);
+
+
+        inventory.addGuitar(guitar);
+        inventory.addGuitar(guitar1);
+
+    }
+
+
 }
