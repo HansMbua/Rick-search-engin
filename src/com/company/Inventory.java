@@ -1,6 +1,5 @@
 package com.company;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,7 +12,7 @@ public class Inventory {
 
         GuiterList = new LinkedList<>();
     }
-    //addeds guitar object to Inventory
+    //added guitar object to Inventory
     public void addGuitar(Guitar guitar){
         GuiterList.add(guitar);
     }
@@ -25,43 +24,31 @@ public class Inventory {
         //loop through list
         for (Iterator i = GuiterList.iterator(); i.hasNext();){
             guitar1 = (Guitar)i.next();
-            //compare matching guiter to serial number
+
+            //compare matching guider to serial number
             if (guitar1.getSerialNumber().equals(serialNumber)){
-                // return guitar1
                 return guitar1;
             }
         }
-
-
 
         return null;
     }
 
     public List Search(GuitarSpec searchGuitar){
-        List guitarList = new LinkedList<>();
-        for (Iterator i = GuiterList.listIterator(); i.hasNext(); ) {
+        List<Guitar> matchingGuiters = new LinkedList();
+        for (Iterator i = GuiterList.iterator(); i.hasNext(); ) {
             //create guitar object to hold guitars
             Guitar guitar2 = (Guitar) i.next();
-            //get matching objects values
-             GuitarSpec guitarSpec = guitar2.getSpec();
-            String model = searchGuitar.getModel().toLowerCase();
-            if (searchGuitar.getTheBuilder() != guitarSpec.getTheBuilder())
-                continue;
-            if ((model != null) && (!model.equals("")) && (!model.equals(guitarSpec.getModel().toLowerCase())))
-                continue;
-            if (searchGuitar.getTheTypes() != guitarSpec.getTheTypes())
-                continue;
 
-            if (searchGuitar.getTheWood() != guitarSpec.getTheWood())
-                continue;
+          if (searchGuitar.matches(guitar2.getSpec())){
+              //pass them in a list object
+              // return the list object
+              matchingGuiters.add(guitar2);
+          }
 
-
-            //pass them in a list object
-            // return the list object
-            guitarList.add(guitar2);
         }
 
-        return guitarList;
+        return matchingGuiters;
 
     }
 }

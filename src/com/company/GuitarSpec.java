@@ -11,14 +11,30 @@ public class GuitarSpec {
     private Types theTypes;
     private String Model;
 
+    private int numStrings;
+
     public GuitarSpec() {
     }
 
-    public GuitarSpec(Wood theWood, Builder theBuilder, Types theTypes,String Model) {
+    public GuitarSpec(Wood theWood, Builder theBuilder, Types theTypes, String model, int numStrings) {
+        this.theWood = theWood;
+        this.theBuilder = theBuilder;
+        this.theTypes = theTypes;
+        Model = model;
+        this.numStrings = numStrings;
+    }
+
+    public GuitarSpec(Wood theWood, Builder theBuilder, Types theTypes, String Model) {
         this.theWood = theWood;
         this.theBuilder = theBuilder;
         this.theTypes = theTypes;
         this.Model = Model;
+    }
+
+    public GuitarSpec(Wood theWood, Builder theBuilder, String model) {
+        this.theWood = theWood;
+        this.theBuilder = theBuilder;
+        Model = model;
     }
 
     public Wood getTheWood() {
@@ -53,6 +69,26 @@ public class GuitarSpec {
         Model = model;
     }
 
+    public boolean matches(GuitarSpec searchGuitar){
+
+        //get matching objects values
+        if ((theBuilder != searchGuitar.getTheBuilder()) && (theTypes != searchGuitar.getTheTypes()) && (theWood != searchGuitar.getTheWood()))
+            return false;
+
+        if ((Model!= null) && (!Model.equals("")) && (!Model.equals(searchGuitar.getModel().toLowerCase())))
+            return false;
+
+        return true;
+    }
+
+    public int getNumStrings() {
+        return numStrings;
+    }
+
+    public void setNumStrings(int numStrings) {
+        this.numStrings = numStrings;
+    }
+
     @Override
     public String toString() {
         return "GuitarSpec{" +
@@ -60,6 +96,7 @@ public class GuitarSpec {
                 ", theBuilder=" + theBuilder +
                 ", theTypes=" + theTypes +
                 ", Model='" + Model + '\'' +
+                ", numStrings=" + numStrings +
                 '}';
     }
 }
