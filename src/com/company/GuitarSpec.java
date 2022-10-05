@@ -4,7 +4,7 @@ import com.company.enumTypes.Builder;
 import com.company.enumTypes.Types;
 import com.company.enumTypes.Wood;
 
-public class GuitarSpec {
+public class GuitarSpec extends InstrumentSpec {
 
     private Wood theWood;
     private Builder theBuilder;
@@ -13,29 +13,13 @@ public class GuitarSpec {
 
     private int numStrings;
 
-    public GuitarSpec() {
-    }
 
-    public GuitarSpec(Wood theWood, Builder theBuilder, Types theTypes, String model, int numStrings) {
-        this.theWood = theWood;
-        this.theBuilder = theBuilder;
-        this.theTypes = theTypes;
-        Model = model;
-        this.numStrings = numStrings;
-    }
+
 
     public GuitarSpec(Wood theWood, Builder theBuilder, Types theTypes, String Model) {
-        this.theWood = theWood;
-        this.theBuilder = theBuilder;
-        this.theTypes = theTypes;
-        this.Model = Model;
+        super(theWood, theBuilder,theTypes,Model);
     }
 
-    public GuitarSpec(Wood theWood, Builder theBuilder, String model) {
-        this.theWood = theWood;
-        this.theBuilder = theBuilder;
-        Model = model;
-    }
 
     public Wood getTheWood() {
         return theWood;
