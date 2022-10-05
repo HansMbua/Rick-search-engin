@@ -4,19 +4,14 @@ import com.company.enumTypes.Builder;
 import com.company.enumTypes.Types;
 import com.company.enumTypes.Wood;
 
-public class Guitar {
+public class Guitar extends Instrument{
     private String serialNumber;
     private GuitarSpec spec;
     private double price;
 
-    public Guitar() {
-
-    }
 
     public Guitar(String serialNumber, GuitarSpec spec, double price) {
-        this.serialNumber = serialNumber;
-        this.spec = spec;
-        this.price = price;
+        super(serialNumber,price,spec);
     }
 
     public String getSerialNumber() {
