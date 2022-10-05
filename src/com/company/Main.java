@@ -19,15 +19,17 @@ public class Main {
         Inventory inventory = new Inventory();
         initializeInventory(inventory);
 
-        GuitarSpec whatErinLikes = new GuitarSpec(Wood.BRAZILIAN_ROSEWOOD,Builder.FINDER,Types.ACOUSTIC,"");
+        GuitarSpec whatErinLikes = new GuitarSpec(Wood.BRAZILIAN_ROSEWOOD,Builder.FINDER,Types.ACOUSTIC,"ns29-7");
 
-        List<Guitar> guitar1 = inventory.Search(whatErinLikes);
+        List<Guitar> matchGuitars = inventory.Search(whatErinLikes);
 
 
-        if (!guitar1.isEmpty()){
-            for (Iterator i = guitar1.iterator(); i.hasNext();){
+        if (!matchGuitars.isEmpty()){
+            System.out.println("you might like this Guitars ");
+            for (Iterator i = matchGuitars.iterator(); i.hasNext();){
                 Guitar guitar3 = (Guitar) i.next();
-                System.out.println(guitar3);
+                GuitarSpec spec = guitar3.getSpec();
+                System.out.println(spec);
 
             }
 
@@ -47,9 +49,13 @@ public class Main {
         GuitarSpec guitarSpec2 = new GuitarSpec(Wood.MAHOGANY,Builder.FINDER,Types.ELECTRIC,"ns29-7");
         Guitar guitar1 = new Guitar("",guitarSpec2,50.0);
 
+        GuitarSpec guitarSpec3 = new GuitarSpec(Wood.MAHOGANY,Builder.ANY,Types.ACOUSTIC,"ns29-7");
+        Guitar guitar2 = new Guitar("",guitarSpec3,50.0);
+
 
         inventory.addGuitar(guitar);
         inventory.addGuitar(guitar1);
+        inventory.addGuitar(guitar2);
 
     }
 
